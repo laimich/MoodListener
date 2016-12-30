@@ -4,7 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class SignIn extends JFrame {
+public class SignIn extends JFrame 
+{
 
 	//decorations instance variables
 	Font fontB = new Font("Serif", Font.BOLD, 24);
