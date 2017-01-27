@@ -13,10 +13,10 @@ public class SignIn extends JFrame
 	Font font2 = new Font("Serif", Font.BOLD, 18);
 	Font font = new Font("Serif", Font.PLAIN, 16);
 	Font fontS = new Font("Serif", Font.PLAIN, 14);
- 
+
 
 	Color darkBlue = new Color(62, 89, 130);
-	//	Color lightBlue = new Color(154, 183, 182);
+	Color lightBlue = new Color(154, 183, 182);
 	Color teal = new Color(146, 183, 166);
 	Color darkTeal = new Color(108, 150, 130);
 	Color darkRed = new Color(124, 28, 30);
@@ -33,27 +33,27 @@ public class SignIn extends JFrame
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
 
-		
+
 		//logo: set images
 		JPanel logoPanel = new JPanel();
 		Icon logo = new LogoIcon(150, 150);
 		LogoIcon logo2 = new LogoIcon(150, 150);
-		logo2.setColor(teal);
+		logo2.setColor(lightBlue);
 		LogoIcon logo3 = new LogoIcon(150, 150);
 		logo3.setColor(auburn);
 		JButton logoButton = new JButton();
 		logoButton.setIcon(logo);
 		logoButton.setRolloverIcon(logo2);
 		logoButton.setPressedIcon(logo3);
-		
-		
+
+
 		//logo: edit button look and feel
 		logoButton.setForeground(darkBlue);
 		logoButton.setFocusPainted(false);
 		logoButton.setContentAreaFilled(false);
 		logoButton.setBorderPainted(false);
-		
-		
+
+
 		//logo: add action
 		logoButton.addActionListener(new ActionListener()
 		{
@@ -76,8 +76,8 @@ public class SignIn extends JFrame
 		TitledBorder label = new TitledBorder(new LineBorder(auburn, 2, true), "Mood Listener");
 		label.setTitleFont(fontB);
 		label.setTitleColor(darkTeal);
-		
-		
+
+
 		//sign in: username
 		JTextField signInID = new JTextField("Enter username");
 		signInID.setToolTipText("Enter username");
@@ -96,8 +96,8 @@ public class SignIn extends JFrame
 				}
 			}
 		});	
-		
-		
+
+
 		//sign in: password
 		JPasswordField signInPass = new JPasswordField("Enter password", 20);
 		signInPass.setToolTipText("Enter password");
@@ -122,8 +122,8 @@ public class SignIn extends JFrame
 				}
 			}
 		});	
-		
-		
+
+
 		//sign in: log in
 		JButton signInButton = new JButton("Log in");
 		signInButton.addActionListener(new ActionListener()
@@ -139,7 +139,7 @@ public class SignIn extends JFrame
 				}
 				else
 				{
-//					signInError.setText("Error: Invalid account information");
+					//					signInError.setText("Error: Invalid account information");
 				}
 
 			}
@@ -149,8 +149,8 @@ public class SignIn extends JFrame
 		signInButton.setForeground(darkTeal);
 		signInButton.setFocusPainted(false);
 		signInButton.setContentAreaFilled(false);
-		
-		
+
+
 		//sign in: add options to optionsPanels
 		signInPanel.setBorder(label);
 		signInPanel.add(new JLabel("\n"));
@@ -186,8 +186,8 @@ public class SignIn extends JFrame
 		signUp.setContentAreaFilled(false);
 		signUpPanel.add(signUp);
 		optionsPanel.add(signUpPanel);
-		
-		
+
+
 		//set optionsPanel look and feel
 		//		optionsPanel.setAlignmentX(LEFT_ALIGNMENT);
 		Border border = new EmptyBorder(0, 0, 0, 0);
@@ -195,7 +195,7 @@ public class SignIn extends JFrame
 		optionsPanel.setBorder(new CompoundBorder(border, margin));
 		mainPanel.add(optionsPanel);
 
-		
+
 		//set frame options
 		add(mainPanel);
 		setTitle("Mood Listener");

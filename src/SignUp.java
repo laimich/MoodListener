@@ -80,10 +80,12 @@ public class SignUp extends JFrame {
 		//refer as username or name?
 		JPanel refer = new JPanel();
 		JRadioButton referName = new JRadioButton("Name");
+		referName.setMnemonic(1);
 		referName.setForeground(darkRed);
 		referName.setFont(fontS);
 		referName.setFocusPainted(false);
 		JRadioButton referAlt = new JRadioButton("Username");
+		referAlt.setMnemonic(2);
 		referAlt.setForeground(darkRed);
 		referAlt.setFont(fontS);
 		referAlt.setFocusPainted(false);
@@ -173,7 +175,29 @@ public class SignUp extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				//check valid account information
-
+				if (!(isLettersOnly(name.getText()) && isLettersOnly(username.getText())))
+				{
+					//name and/or username must use only letters
+					JOptionPane.showMessageDialog(null, "Incorrect format: Name and/or Username");
+				}
+				else if (!model.checkAvailUsername(username.getText()))
+				{
+					//desired username is unavailable
+					JOptionPane.showMessageDialog(null, "Invalid entry: Username unavailable");
+				}
+				else if (!password.getPassword().equals(passwordCheck.getPassword()))
+				{
+					//passwords do not match
+					JOptionPane.showMessageDialog(null, "Invalid entry: Passwords don't match");
+				}
+				else
+				{
+					int referSelection = group.getSelection().getMnemonic();
+					boolean referName = false;
+					if (referSelection == 1) referName = true;
+					String pass = new String(password.getPassword());
+					model.addNewUser(name.getText(), username.getText(), referName, pass);
+				}
 			}
 
 		});
@@ -216,5 +240,15 @@ public class SignUp extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
+	
+	public boolean isLettersOnly(String text)
+	{
+	    char[] characters = text.toCharArray();
+	    for (char c : characters) {
+	        if(!Character.isLetter(c)) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
 }
-
