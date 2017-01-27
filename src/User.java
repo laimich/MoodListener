@@ -1,5 +1,5 @@
 
-public class User 
+public class User implements Comparable<User>
 {
 	private String name;
 	private String username;
@@ -38,5 +38,10 @@ public class User
 			return true;
 		else
 			return false;
+	}
+
+	public int compareTo(User u) 
+	{
+		return username.compareTo(u.getUsername());
 	}
 }

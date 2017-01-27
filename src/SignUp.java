@@ -175,6 +175,7 @@ public class SignUp extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				//check valid account information
+				
 				if (!(isLettersOnly(name.getText()) && isLettersOnly(username.getText())))
 				{
 					//name and/or username must use only letters
@@ -185,7 +186,7 @@ public class SignUp extends JFrame {
 					//desired username is unavailable
 					JOptionPane.showMessageDialog(null, "Invalid entry: Username unavailable");
 				}
-				else if (!password.getPassword().equals(passwordCheck.getPassword()))
+				else if (!(new String(password.getPassword()).equals(new String(passwordCheck.getPassword()))))
 				{
 					//passwords do not match
 					JOptionPane.showMessageDialog(null, "Invalid entry: Passwords don't match");
@@ -195,8 +196,11 @@ public class SignUp extends JFrame {
 					int referSelection = group.getSelection().getMnemonic();
 					boolean referName = false;
 					if (referSelection == 1) referName = true;
+					System.out.println(referName);
 					String pass = new String(password.getPassword());
 					model.addNewUser(name.getText(), username.getText(), referName, pass);
+					SignIn signIn = new SignIn(model);
+					dispose();
 				}
 			}
 

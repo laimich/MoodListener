@@ -134,12 +134,12 @@ public class SignIn extends JFrame
 				String password = new String(signInPass.getPassword());
 				if(model.signIn(username, password))
 				{
-					//next screen
-					//dispose();
+					MainMenu mainMenu = new MainMenu(model);
+					dispose();
 				}
 				else
 				{
-					//					signInError.setText("Error: Invalid account information");
+					JOptionPane.showMessageDialog(null, "Error: Invalid account information");
 				}
 
 			}
